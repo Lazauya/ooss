@@ -16,3 +16,4 @@ The simulation has the following process:
 
 What I neglected to mention was that we actually generate separate arrays for ice+snow and just ice. This is because ice can always form, but snow can only form during the ticks that it rains.
 
+The comments in the code also offer some insight.
