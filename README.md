@@ -1,6 +1,6 @@
 ### Out of Sight Snow
 
-![OOSS Logo](icon.png)
+![OOSS Logo](icon_black.png)
 
 This mod aims to add snow fall and ice generation to unloaded chunks efficiently. It accomplishes this with the following process:
 
