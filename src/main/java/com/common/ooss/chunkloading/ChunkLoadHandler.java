@@ -89,9 +89,6 @@ public class ChunkLoadHandler {
                             TickOfLastRandomTickCapability.CAPABILITY_TICKS_SINCE_RANDOM_TICK)
                         .orElse(null);
 
-                //                LOGGER.info(tick);
-                //                LOGGER.info(totalNumberRainingTicks.get());
-
                 if (tick != null) {
                   if (tick.getTickOfLastRandomTick() != -1) {
                     // first find the difference between the current tick and then
@@ -103,18 +100,6 @@ public class ChunkLoadHandler {
                         totalNumberRainingTicks.get() - tick.getLastNumberOfRainingTicks();
 
                     if (ticksOutOfRandomTickRange > 1) {
-                      //                      LOGGER.info(
-                      //                          chunkCache.level.getGameTime()
-                      //                              + ", "
-                      //                              + tick.getTickOfLastRandomTick()
-                      //                              + ", tick difference is "
-                      //                              + ticksOutOfRandomTickRange
-                      //                              + ", "
-                      //                              + ticksRaining
-                      //                              + ", "
-                      //                              + tick.getLastNumberOfRainingTicks()
-                      //                              + ", "
-                      //                              + totalNumberRainingTicks.get());
                       // we need to simulate snowfall
                       try {
                         simulateSnowfallAndFreezing(
@@ -208,9 +193,6 @@ public class ChunkLoadHandler {
     } else if (20 * 60 * 100 <= numTrials) {
       numberOfPercips = 256 * 16;
     } else {
-      //      LOGGER.info(numTrials);
-      //      LOGGER.info(randomTickProb);
-      //      LOGGER.info(binGen);
       numberOfPercips = binGen.nextInt(numTrials, randomTickProb);
     }
 
@@ -307,53 +289,6 @@ public class ChunkLoadHandler {
               .handlePrecipitation(belowBlockState, world, belowPos, biomePrecipitation);
         }
       }
-
-      //    for (int x = 0; x < 16; x++) {
-      //      for (int z = 0; z < 16; z++) {
-      //        // get our number of snows in pericps
-      //        int idx = 16 * x + z;
-      //        int numFreezes = freezes[idx];
-      //        int numPercipsAndFreezes = percipsAndFreezes[idx];
-      //
-      //        int worldX = chunk.getPos().getMinBlockX() + x;
-      //        int worldZ = chunk.getPos().getMinBlockZ() + z;
-      //        BlockPos blockPos =
-      //            world.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING, new BlockPos(worldX, 0,
-      // worldZ));
-      //        BlockPos belowPos = blockPos.below();
-      //        Biome biome = world.getBiome(blockPos);
-      //
-      //        // the logic for freezing and snowing was basically copied from the ServerLevel
-      //        // tickChunk method
-      //        if (numFreezes > 0 || numPercipsAndFreezes > 0) {
-      //          if (biome.shouldFreeze(world, belowPos)) {
-      //            world.setBlockAndUpdate(belowPos, Blocks.ICE.defaultBlockState());
-      //          }
-      //        }
-      //
-      //        // TODO: implement snow piling up maybe? would be neat!
-      //        if (numPercipsAndFreezes > 0) {
-      //          if (biome.shouldSnow(world, blockPos)) {
-      //            world.setBlockAndUpdate(blockPos, Blocks.SNOW.defaultBlockState());
-      //          }
-      //
-      //          BlockState belowBlockState = world.getBlockState(belowPos);
-      //          Biome.Precipitation biomePrecipitation = biome.getPrecipitation();
-      //          if (biomePrecipitation == Biome.Precipitation.RAIN
-      //              && biome.isColdEnoughToSnow(belowPos)) {
-      //            biomePrecipitation = Biome.Precipitation.SNOW;
-      //          }
-      //
-      //          // repeat multiple times for cauldrons
-      //          for (int numPercips = 0;
-      //              numPercips < numPercipsAndFreezes && numPercips < 8;
-      //              numPercips++) {
-      //            belowBlockState
-      //                .getBlock()
-      //                .handlePrecipitation(belowBlockState, world, belowPos, biomePrecipitation);
-      //          }
-      //        }
-      //      }
     }
   }
 }
