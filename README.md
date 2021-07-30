@@ -1,5 +1,7 @@
 ### Out of Sight Snow
 
+![OOSS Logo](icon.png)
+
 This mod aims to add snow fall and ice generation to unloaded chunks efficiently. It accomplishes this with the following process:
 
 1. Every tick, iterate over cached chunks and check the TickOfLastRandomTick. 
